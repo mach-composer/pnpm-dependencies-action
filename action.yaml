@@ -1,0 +1,21 @@
+name: "pnpm package dependencies"
+description: "Output dependencies needed to filter git commits"
+author: "Lab Digital"
+
+inputs:
+  project_dirname:
+    description: "Project root directory name"
+    required: true
+  package:
+    description: "Package name"
+    required: true
+
+# Define your outputs here.
+outputs:
+  paths:
+    description: "List of git filter paths"
+
+
+runs:
+  using: node20
+  main: dist/index.js

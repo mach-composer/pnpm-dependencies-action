@@ -1,0 +1,37 @@
+{
+  "name": "pnpm-dependencies-action",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "license": "MIT",
+  "author": "Lab Digital",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "node ./esbuild.mjs",
+    "format": "prettier --check . --ignore-path .gitignore --ignore-path .prettierignore --cache",
+    "format:fix": "prettier --write . --ignore-path .gitignore --ignore-path .prettierignore --cache --log-level=warn",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/exec": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.7",
+    "esbuild": "^0.19.5",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2",
+    "vitest": "^1.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
