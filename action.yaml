@@ -3,9 +3,6 @@ description: "Output dependencies needed to filter git commits"
 author: "Lab Digital"
 
 inputs:
-  project_dirname:
-    description: "Project root directory name"
-    required: true
   package:
     description: "Package name"
     required: true
@@ -14,7 +11,6 @@ inputs:
 outputs:
   paths:
     description: "List of git filter paths"
-
 
 runs:
   using: node20

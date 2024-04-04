@@ -2,9 +2,16 @@ import * as core from "@actions/core";
 import * as exec from "@actions/exec";
 import { Inputs } from "./types";
 
+const githubWorkspace = process.env.GITHUB_WORKSPACE;
+
 export async function run({ packageName }: Inputs): Promise<void> {
   let output = "";
   let error = "";
+
+  if (!githubWorkspace) {
+    core.error("GITHUB_WORKSPACE is not set");
+    return;
+  }
 
   await exec.exec(
     "pnpm",
@@ -43,11 +50,10 @@ export function parseOutput(output: string): DependencyPaths {
   const deps = filter(result);
   const flatDeps = flattenDeps(deps);
 
-  const root = core.getInput("project_dirname");
   const relativePaths = Object.fromEntries(
     Object.entries(flatDeps).map(([key, value]) => [
       key,
-      value.split(`${root}/`).slice(-1)[0],
+      value.replace(`${githubWorkspace}/`, ""),
     ])
   );
 
