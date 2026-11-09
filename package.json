@@ -21,14 +21,14 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1"
+    "@actions/core": "^3.0.1"
   },
   "devDependencies": {
-    "@types/node": "^22.13.5",
-    "esbuild": "^0.25.0",
-    "prettier": "^3.5.2",
-    "typescript": "^5.7.3",
-    "vitest": "^3.0.7"
+    "@types/node": "^22.20.5",
+    "esbuild": "^0.25.12",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12"
   },
   "engines": {
     "node": ">=20"
