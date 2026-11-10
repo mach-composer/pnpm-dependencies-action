@@ -10,10 +10,10 @@ By providing a full list of `--get-filter-path` arguments for each dependency we
 Pin to a release tag or a major version ref — never reference `main`, as it
 can contain unreleased changes.
 
-| Ref   | Runtime | Notes                                                                 |
-| ----- | ------- | --------------------------------------------------------------------- |
-| `@v2` | Node 24 | **Recommended.** Security updates, `rolldown` bundle, pnpm 12.         |
-| `@v1` | Node 20 | Previous release.                                                     |
+| Ref   | Runtime | Notes                                                          |
+| ----- | ------- | -------------------------------------------------------------- |
+| `@v2` | Node 24 | **Recommended.** Security updates, `rolldown` bundle, pnpm 12. |
+| `@v1` | Node 20 | Previous release.                                              |
 
 We recommend pinning the commit SHA of a release tag with the version as a
 comment (e.g. using [pinact](https://github.com/suzuki-shunsuke/pinact)):
