@@ -5,12 +5,42 @@ The `mach-composer/pnpm-dependencies-action` can be used to render a string cont
 In order for that action to generate a good list of changes made to a component it needs to be aware of the dependencies within the monorepo. Any change in a dependency could trigger a new component version and must be part of the changelog.
 By providing a full list of `--get-filter-path` arguments for each dependency we ensure all related commits are part of the output.
 
+## Versions
+
+Pin to a release tag or a major version ref — never reference `main`, as it
+can contain unreleased changes.
+
+| Ref   | Runtime | Notes                                                                 |
+| ----- | ------- | --------------------------------------------------------------------- |
+| `@v2` | Node 24 | **Recommended.** Security updates, `rolldown` bundle, pnpm 12.         |
+| `@v1` | Node 20 | Previous release.                                                     |
+
+We recommend pinning the commit SHA of a release tag with the version as a
+comment (e.g. using [pinact](https://github.com/suzuki-shunsuke/pinact)):
+
+```yaml
+- uses: mach-composer/pnpm-dependencies-action@<sha> # v2.x.y
+```
+
+### Releasing
+
+`main` and `v2` point to the same commit. To release, tag the commit on `main`
+and fast-forward the `v2` branch to it:
+
+```sh
+git tag -a v2.x.y -m "v2.x.y" && git push origin v2.x.y
+git push origin main:v2
+```
+
+Always merge into `main` and fast-forward `v2` afterwards; never commit or
+squash-merge directly into `v2`, otherwise the branches diverge.
+
 ## Usage
 
 where `service-name` could be `catalog` for example.
 
 ```yaml
-- uses: mach-composer/pnpm-dependencies-action@v1
+- uses: mach-composer/pnpm-dependencies-action@v2
   id: filter-paths
   with:
     package: "@commerce-backend/${{ inputs.service-name }}"
