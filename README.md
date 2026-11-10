@@ -10,16 +10,17 @@ By providing a full list of `--get-filter-path` arguments for each dependency we
 Pin to a release tag or a major version ref — never reference `main`, as it
 can contain unreleased changes.
 
-| Ref   | Runtime | Notes                                                          |
-| ----- | ------- | -------------------------------------------------------------- |
-| `@v2` | Node 24 | **Recommended.** Security updates, `rolldown` bundle, pnpm 12. |
-| `@v1` | Node 20 | Previous release.                                              |
+| Ref       | Runtime | Notes                                                                     |
+| --------- | ------- | ------------------------------------------------------------------------- |
+| `@v2.1.0` | Node 24 | **Latest release.** Security updates, `rolldown` bundle, pnpm 12.         |
+| `@v2`     | Node 24 | Moving major version branch, kept in sync with the latest `v2.x` release. |
+| `@v1`     | Node 20 | Previous release.                                                         |
 
 We recommend pinning the commit SHA of a release tag with the version as a
 comment (e.g. using [pinact](https://github.com/suzuki-shunsuke/pinact)):
 
 ```yaml
-- uses: mach-composer/pnpm-dependencies-action@<sha> # v2.x.y
+- uses: mach-composer/pnpm-dependencies-action@e599daf153712c5df8debd8e936b3023f36e2e09 # v2.1.0
 ```
 
 ### Releasing
